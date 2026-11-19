@@ -2,7 +2,7 @@ import test, { describe, before, after } from 'node:test';
 import assert from 'node:assert/strict';
 import type { Server } from 'node:http';
 import { runMigration } from '../scripts/migrate';
-import { createExpressApp } from '../server';
+import { createExpressApp } from '../server/app';
 
 describe('API HTTP Endpoints Contract Suite', () => {
   let server: Server;

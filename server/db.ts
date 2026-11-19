@@ -6,9 +6,11 @@ import Database from 'better-sqlite3';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-export const DATA_DIR = path.resolve(process.cwd(), 'data');
+export const DATA_DIR = process.env.DATA_DIR
+  ? path.resolve(process.env.DATA_DIR)
+  : path.resolve(process.cwd(), 'data');
 export const UPLOADS_DIR = path.join(DATA_DIR, 'uploads');
-export const DB_PATH = path.join(DATA_DIR, 'portfolio.db');
+export const DB_PATH = process.env.DATABASE_URL || path.join(DATA_DIR, 'portfolio.db');
 
 let instance: Database.Database | null = null;
 
@@ -29,6 +31,7 @@ export function initDatabase(dbFilePath: string = DB_PATH): Database.Database {
   // Load and apply schema
   const schemaCandidates = [
     path.resolve(__dirname, 'schema.sql'),
+    path.resolve(__dirname, '..', 'server', 'schema.sql'),
     path.resolve(process.cwd(), 'server', 'schema.sql'),
     path.resolve(__dirname, 'server', 'schema.sql'),
   ];
