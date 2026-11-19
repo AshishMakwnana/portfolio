@@ -187,15 +187,17 @@ node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"
 
 ### Step 1: Install Dependencies
 ```bash
-npm ci --omit=dev
+npm install
 ```
-*(If building client assets on the server, run `npm ci` first to include Vite/Tailwind, then build).*
+*(On CI/CD servers, run `npm ci` to install exact locked dependencies).*
 
-### Step 2: Build Production Frontend Bundle
+### Step 2: Build Production Bundle (Client Assets + Backend Server)
 ```bash
 npm run build
 ```
-This compiles the React 19 application and Tailwind CSS into optimized, minified static files located in `dist/`.
+This runs both Vite and esbuild in parallel:
+1. Compiles the React 19 application and Tailwind CSS into optimized, minified static files located in `dist/`.
+2. Compiles `server.ts` into a standalone, pure Node.js ES module at `dist/server.js`. This allows the server to run directly with native `node` in production without needing a TypeScript transpiler at runtime.
 
 ### Step 3: Run Database Migrations
 ```bash
@@ -207,15 +209,23 @@ This initializes `data/portfolio.db`, runs the schema DDL, and populates the dat
 ```bash
 npm test
 ```
-Validates that database constraints, queries, and API endpoints are 100% operational before directing traffic.
+Validates that database constraints, queries, and API endpoints are 100% operational before directing live traffic.
 
-### Step 5: Start Server under a Process Manager (PM2 / Systemd)
-Do not use `npm run dev` in production. Run `server.ts` with `NODE_ENV=production`:
+### Step 5: Start the Production Server
+Start the precompiled server with `npm start` or directly via `node dist/server.js`:
 
-#### Using PM2:
+```bash
+# Direct startup
+NODE_ENV=production PORT=3000 node dist/server.js
+
+# Or using the npm start script
+npm start
+```
+
+#### Using PM2 Process Manager:
 ```bash
 npm install -g pm2
-pm2 start "npx tsx server.ts" --name portfolio --env production
+NODE_ENV=production pm2 start dist/server.js --name portfolio
 pm2 save
 pm2 startup
 ```
@@ -235,7 +245,7 @@ Environment=PORT=3000
 Environment=ADMIN_EMAIL=ashishmakwana435@gmail.com
 Environment=ADMIN_PASSWORD=YourStrongProductionPassword123!
 Environment=ADMIN_TOKEN_SECRET=your-generated-64-char-hex-secret
-ExecStart=/usr/bin/npx tsx /var/www/portfolio/server.ts
+ExecStart=/usr/bin/node /var/www/portfolio/dist/server.js
 Restart=on-failure
 RestartSec=5s
 

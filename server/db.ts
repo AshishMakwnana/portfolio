@@ -27,8 +27,13 @@ export function initDatabase(dbFilePath: string = DB_PATH): Database.Database {
   }
 
   // Load and apply schema
-  const schemaPath = path.resolve(__dirname, 'schema.sql');
-  if (fs.existsSync(schemaPath)) {
+  const schemaCandidates = [
+    path.resolve(__dirname, 'schema.sql'),
+    path.resolve(process.cwd(), 'server', 'schema.sql'),
+    path.resolve(__dirname, 'server', 'schema.sql'),
+  ];
+  const schemaPath = schemaCandidates.find((p) => fs.existsSync(p));
+  if (schemaPath) {
     const schemaSql = fs.readFileSync(schemaPath, 'utf8');
     db.exec(schemaSql);
   }
