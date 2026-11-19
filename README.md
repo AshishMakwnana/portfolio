@@ -224,8 +224,14 @@ npm start
 
 #### Using PM2 Process Manager:
 ```bash
-npm install -g pm2
-NODE_ENV=production pm2 start dist/server.js --name portfolio
+# Start with the preconfigured ecosystem configuration
+pm2 start ecosystem.config.cjs --env production
+
+# Monitor status & logs
+pm2 status
+pm2 logs portfolio
+
+# Ensure it starts automatically on system reboots
 pm2 save
 pm2 startup
 ```
