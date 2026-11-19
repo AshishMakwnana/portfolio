@@ -1,0 +1,421 @@
+{
+  "profile": {
+    "name": "Ashish Makwana",
+    "greeting": "Hi, I'm Ashish Makwana",
+    "headline": "Building reliable backend systems and web applications with Laravel.",
+    "headlineHighlight": "reliable backend systems",
+    "designation": "Laravel Developer & Backend Engineer",
+    "availabilityText": "Available for full-time backend & full-stack roles",
+    "shortIntro": "I build dependable APIs, structured databases, and business web applications. My focus is Laravel, relational MySQL design, background queues, and clean frontend integration.",
+    "aboutHeading": "Clean architecture, reliable data flow, and code built to last.",
+    "aboutParagraphs": [
+      "I am a backend-focused developer who enjoys turning complex business workflows into clear, maintainable systems. My work centers on Laravel and MySQL, including transactional backends, REST APIs, and management dashboards.",
+      "I pay close attention to relational schema design, query efficiency, and input validation. I also build responsive interfaces and connect them to backend services with modern JavaScript."
+    ],
+    "aboutHighlights": [
+      "Laravel service architecture, queues, and Eloquent ORM",
+      "REST API design, token authentication, and rate limiting",
+      "Relational database modeling, indexing, and query tuning",
+      "JavaScript integration for responsive business workflows"
+    ],
+    "email": "ashishmakwana435@gmail.com",
+    "location": "India · Remote Ready",
+    "resumeFilename": "Ashish-Makwana-Resume.pdf",
+    "socialLinks": [
+      {
+        "id": "github",
+        "label": "GitHub",
+        "url": "https://github.com/ashishmakwana",
+        "platform": "github"
+      },
+      {
+        "id": "linkedin",
+        "label": "LinkedIn",
+        "url": "https://www.linkedin.com/in/ashish-makwana",
+        "platform": "linkedin"
+      }
+    ]
+  },
+  "skills": [
+    {
+      "id": "skill-system-design",
+      "name": "System Design",
+      "category": "Architecture & System Design",
+      "isPrimary": true,
+      "focusNote": "Service boundaries, queue decoupling, failure modes & concurrency"
+    },
+    {
+      "id": "skill-adr",
+      "name": "Architecture Decision Records (ADRs)",
+      "category": "Architecture & System Design",
+      "isPrimary": false,
+      "focusNote": "Trade-off analysis, technical rationale, and RFC documentation"
+    },
+    {
+      "id": "skill-laravel",
+      "name": "Laravel",
+      "category": "Backend Engineering",
+      "isPrimary": true,
+      "focusNote": "Service architecture, queues, Eloquent ORM, Sanctum, events"
+    },
+    {
+      "id": "skill-php",
+      "name": "PHP 8+",
+      "category": "Backend Engineering",
+      "isPrimary": true,
+      "focusNote": "Object-oriented design, typed properties, dependency injection"
+    },
+    {
+      "id": "skill-rest",
+      "name": "RESTful APIs",
+      "category": "Backend Engineering",
+      "isPrimary": true,
+      "focusNote": "Resource transformers, rate limiting, token authentication, error handling"
+    },
+    {
+      "id": "skill-mysql",
+      "name": "MySQL",
+      "category": "Databases & Modeling",
+      "isPrimary": true,
+      "focusNote": "3NF normalized schemas, composite indexes, query plans, transactions"
+    },
+    {
+      "id": "skill-data-modeling",
+      "name": "Relational Data Modeling",
+      "category": "Databases & Modeling",
+      "isPrimary": true,
+      "focusNote": "Referential integrity, constraints, migration lifecycles"
+    },
+    {
+      "id": "skill-redis",
+      "name": "Redis",
+      "category": "Databases & Modeling",
+      "isPrimary": false,
+      "focusNote": "Queue workers, sliding-window rate limiters, response caching"
+    },
+    {
+      "id": "skill-sqlite",
+      "name": "SQLite",
+      "category": "Databases & Modeling",
+      "isPrimary": false,
+      "focusNote": "Embedded relational storage, WAL mode, transactional migrations"
+    },
+    {
+      "id": "skill-testing",
+      "name": "Testing Strategy",
+      "category": "Software Quality & Testing",
+      "isPrimary": true,
+      "focusNote": "Test pyramid, automated API feature tests, database test fixtures"
+    },
+    {
+      "id": "skill-pest",
+      "name": "PHPUnit & Automated Testing",
+      "category": "Software Quality & Testing",
+      "isPrimary": false,
+      "focusNote": "HTTP status verification, boundary tests, regression prevention"
+    },
+    {
+      "id": "skill-git",
+      "name": "Git & GitHub Workflows",
+      "category": "DevOps & Infrastructure",
+      "isPrimary": false,
+      "focusNote": "Branch protection, semantic commits, PR reviews"
+    },
+    {
+      "id": "skill-cicd",
+      "name": "CI/CD Automation",
+      "category": "DevOps & Infrastructure",
+      "isPrimary": false,
+      "focusNote": "Automated linting, test pipelines, artifact verification gates"
+    },
+    {
+      "id": "skill-linux",
+      "name": "Linux CLI & Nginx",
+      "category": "DevOps & Infrastructure",
+      "isPrimary": false,
+      "focusNote": "Process managers (Supervisor), reverse proxies, file permissions"
+    },
+    {
+      "id": "skill-observability",
+      "name": "Observability & Logging",
+      "category": "Observability & Security",
+      "isPrimary": false,
+      "focusNote": "Structured JSON logs, queue telemetry, health checks"
+    },
+    {
+      "id": "skill-security",
+      "name": "Security Review & OWASP",
+      "category": "Observability & Security",
+      "isPrimary": false,
+      "focusNote": "Input sanitization, token hashing, CSRF/XSS defenses, least-privilege"
+    },
+    {
+      "id": "skill-js",
+      "name": "JavaScript (ES6+)",
+      "category": "Frontend Development",
+      "isPrimary": true,
+      "focusNote": "Async/await fetch workflows, DOM state management, accessible UI"
+    },
+    {
+      "id": "skill-html-css",
+      "name": "HTML5 & Tailwind CSS",
+      "category": "Frontend Development",
+      "isPrimary": false,
+      "focusNote": "Semantic structure, responsive utility grids, accessibility standards"
+    },
+    {
+      "id": "skill-postman",
+      "name": "Postman & Composer",
+      "category": "Development Tools",
+      "isPrimary": false,
+      "focusNote": "API contract testing, dependency management, automated collections"
+    }
+  ],
+  "experiences": [
+    {
+      "id": "exp-1",
+      "company": "Independent Software Projects",
+      "role": "Laravel & Backend Developer",
+      "period": "Selected project work",
+      "location": "India",
+      "responsibilities": [
+        "Designed a multi-tenant operations and inventory platform with Laravel, MySQL, and role-based access controls.",
+        "Modeled stock ledgers and order transitions with transactional updates, audit history, and scoped API access.",
+        "Built an asynchronous webhook dispatcher with Redis queues, signed payloads, retry handling, and delivery logs.",
+        "Connected backend workflows to responsive dashboards and validated forms using JavaScript."
+      ],
+      "technologies": [
+        "Laravel",
+        "PHP",
+        "MySQL",
+        "REST APIs",
+        "Redis",
+        "JavaScript"
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "id": "proj-erp-api",
+      "slug": "multi-tenant-business-operations-api",
+      "title": "Multi-Tenant Operations & Inventory Platform",
+      "category": "Backend Systems | Full-Stack",
+      "status": "Completed",
+      "featured": true,
+      "shortDescription": "A Laravel and MySQL platform for multi-tenant inventory, order transitions, and role-based staff access.",
+      "problemStatement": "Operations teams needed consistent stock records across warehouses, an audit trail for adjustments, and clear permission boundaries.",
+      "solutionSummary": "Organized the application into Laravel service boundaries, with transactional stock updates, scoped API tokens, and normalized MySQL tables.",
+      "githubUrl": "https://github.com/ashishmakwana",
+      "technicalHighlights": [
+        "Transactional stock updates protect inventory consistency during concurrent changes",
+        "Normalized MySQL schema with composite indexes for tenant, SKU, and warehouse lookups",
+        "Automated feature and unit tests cover tenant isolation and core workflows",
+        "Scoped Sanctum abilities enforce role-specific API access"
+      ],
+      "technologies": [
+        "Laravel",
+        "PHP",
+        "MySQL",
+        "REST APIs",
+        "JavaScript",
+        "Redis"
+      ],
+      "screenshots": []
+    },
+    {
+      "id": "proj-api-gateway",
+      "slug": "queued-webhook-notification-dispatcher",
+      "title": "Queued Webhook & Notification Dispatcher",
+      "category": "API Infrastructure | Asynchronous Messaging",
+      "status": "Completed",
+      "featured": true,
+      "shortDescription": "A Laravel and Redis queue service that sends signed webhooks, retries failed deliveries, and records delivery history.",
+      "problemStatement": "Synchronous calls to partner APIs can slow user requests, and timeouts need a clear, recoverable delivery history.",
+      "solutionSummary": "Moved outbound requests to Redis-backed workers, signed webhook payloads, and stored each delivery attempt for inspection.",
+      "githubUrl": "https://github.com/ashishmakwana",
+      "technicalHighlights": [
+        "HMAC-SHA256 signatures let recipients verify webhook payloads",
+        "Exponential retry backoff handles temporary endpoint failures",
+        "Structured delivery logs record latency, status codes, and retry counts",
+        "Idempotent job keys help prevent duplicate notifications after worker restarts"
+      ],
+      "technologies": [
+        "Laravel",
+        "PHP",
+        "Redis",
+        "MySQL",
+        "REST APIs"
+      ],
+      "screenshots": []
+    },
+    {
+      "id": "proj-portfolio",
+      "slug": "personal-portfolio-content-manager",
+      "title": "Personal Portfolio & Content Manager",
+      "category": "Full-Stack Web Application",
+      "status": "Completed",
+      "featured": true,
+      "shortDescription": "A responsive portfolio built with React and TypeScript, with an Express API and SQLite-backed admin tools for managing profile content, projects, skills, and experience.",
+      "problemStatement": "Portfolio content needs to stay easy to update while keeping public pages and project case studies consistent.",
+      "solutionSummary": "Built a React and TypeScript frontend, a server-side API, and a normalized SQLite store with an admin dashboard for editing portfolio records.",
+      "githubUrl": "https://github.com/ashishmakwana",
+      "technicalHighlights": [
+        "SQLite stores profile, project, experience, skill, education, and contact records",
+        "Admin tools support editing portfolio content through authenticated API routes",
+        "Project detail pages and resume downloads use the same live portfolio data",
+        "Vite, React, TypeScript, Tailwind CSS, Express, and SQLite form the application stack"
+      ],
+      "technologies": [
+        "React",
+        "TypeScript",
+        "Vite",
+        "Tailwind CSS",
+        "Express",
+        "SQLite"
+      ],
+      "screenshots": []
+    }
+  ],
+  "education": [
+    {
+      "id": "edu-1",
+      "degree": "Bachelor of Computer Applications (BCA)",
+      "institution": "Saurashtra University",
+      "period": "2020 – 2023",
+      "location": "India",
+      "description": "Coursework in relational databases, data structures, OOP in C++/Java, and web application development."
+    }
+  ],
+  "certifications": [
+    {
+      "id": "cert-1",
+      "title": "REST APIs with Laravel & Sanctum",
+      "issuer": "Laracasts and independent study",
+      "date": "2024"
+    },
+    {
+      "id": "cert-2",
+      "title": "Relational Database Design & SQL Optimization",
+      "issuer": "Coursework",
+      "date": "2024"
+    }
+  ],
+  "messages": [],
+  "architectureNodes": [
+    {
+      "id": "client",
+      "label": "Client App",
+      "layer": "Presentation",
+      "protocol": "HTTPS / JSON",
+      "summary": "Validates input payloads and sends bearer-authenticated requests.",
+      "activeInWorkflows": [
+        "rest-api",
+        "auth-queue"
+      ]
+    },
+    {
+      "id": "gateway",
+      "label": "API Gateway & Sanctum",
+      "layer": "Middleware",
+      "protocol": "Rate Limit · Auth",
+      "summary": "Enforces throttling, token verification, and FormRequest rules.",
+      "activeInWorkflows": [
+        "rest-api",
+        "auth-queue"
+      ]
+    },
+    {
+      "id": "laravel",
+      "label": "Laravel Service Layer",
+      "layer": "Domain Logic",
+      "protocol": "PHP 8.3 · Jobs",
+      "summary": "Executes atomic business rules, transforms responses, and dispatches queued jobs.",
+      "activeInWorkflows": [
+        "rest-api",
+        "database",
+        "auth-queue"
+      ]
+    },
+    {
+      "id": "database",
+      "label": "MySQL & Redis",
+      "layer": "Persistence",
+      "protocol": "InnoDB · Cache",
+      "summary": "Stores normalized relational records, indexed queries, and queue state.",
+      "activeInWorkflows": [
+        "rest-api",
+        "database",
+        "auth-queue"
+      ]
+    }
+  ],
+  "architectureWorkflows": [
+    {
+      "id": "rest-api",
+      "tabLabel": "REST API",
+      "command": "php artisan route:list --path=api/v1",
+      "endpointLabel": "GET /api/v1/orders",
+      "latencyLabel": "18ms",
+      "statusLabel": "200 OK",
+      "terminalLines": [
+        "$ php artisan route:list --path=api/v1",
+        "  GET|HEAD  api/v1/orders ........... OrderController@index",
+        "  POST      api/v1/orders ........... OrderController@store",
+        "  GET|HEAD  api/v1/orders/{id} ...... OrderController@show",
+        "  Middleware: auth:sanctum, throttle:api",
+        "  Response: 200 OK · JSON Resource · 18ms"
+      ],
+      "activeNodeIds": [
+        "client",
+        "gateway",
+        "laravel",
+        "database"
+      ]
+    },
+    {
+      "id": "database",
+      "tabLabel": "Database",
+      "command": "php artisan migrate:status",
+      "endpointLabel": "MySQL 8.0 InnoDB",
+      "latencyLabel": "4ms",
+      "statusLabel": "Synced",
+      "terminalLines": [
+        "$ php artisan migrate:status",
+        "  [Ran] 2025_01_10_000001_create_users_and_roles_tables",
+        "  [Ran] 2025_01_14_000002_create_orders_and_ledger_tables",
+        "  [Ran] 2025_02_03_000003_add_composite_status_index",
+        "  Engine: MySQL 8.0 InnoDB · Transactions: ACID Verified"
+      ],
+      "activeNodeIds": [
+        "laravel",
+        "database"
+      ]
+    },
+    {
+      "id": "auth-queue",
+      "tabLabel": "Auth & Queue",
+      "command": "php artisan queue:monitor redis:webhooks",
+      "endpointLabel": "Sanctum + Redis Worker",
+      "latencyLabel": "9ms",
+      "statusLabel": "Active",
+      "terminalLines": [
+        "$ php artisan queue:monitor redis:webhooks",
+        "  [OK] Queue [webhooks] ......... Driver: Redis · Backoff: 10s, 60s",
+        "  [OK] Sanctum Token Guard ...... Scoped abilities enforced",
+        "  [OK] Rate Limiter ............. 60 req/min per IP + token"
+      ],
+      "activeNodeIds": [
+        "client",
+        "gateway",
+        "laravel",
+        "database"
+      ]
+    }
+  ],
+  "settings": {
+    "siteTitle": "Ashish Makwana | Laravel Developer & Backend Engineer",
+    "metaDescription": "Portfolio of Ashish Makwana, a Laravel developer and backend engineer focused on APIs, MySQL, and full-stack business applications.",
+    "copyrightYear": 2026,
+    "footerTagline": "Laravel Developer · Backend Engineer · Full-Stack Developer"
+  }
+}
