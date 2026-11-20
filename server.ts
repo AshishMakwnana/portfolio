@@ -1,3 +1,4 @@
+import './server/env';
 import { createExpressApp, startServer } from './server/app';
 
 export { createExpressApp, startServer };

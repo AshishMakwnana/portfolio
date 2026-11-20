@@ -81,7 +81,7 @@ describe('API HTTP Endpoints Contract Suite', () => {
     assert.ok(body.id);
   });
 
-  test('POST /api/admin/login validates credentials', async () => {
+  test('POST /api/admin/login validates credentials and respects environment variables', async () => {
     // Bad credentials
     const badRes = await fetch(`${baseUrl}/api/admin/login`, {
       method: 'POST',
@@ -89,5 +89,26 @@ describe('API HTTP Endpoints Contract Suite', () => {
       body: JSON.stringify({ email: 'bad@example.com', password: 'wrong' }),
     });
     assert.equal(badRes.status, 401);
+
+    // Test with custom dynamic environment variables
+    process.env.ADMIN_EMAIL = 'custom-admin@example.com';
+    process.env.ADMIN_PASSWORD = 'MyCustomSecretPassword999!';
+
+    const goodRes = await fetch(`${baseUrl}/api/admin/login`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        email: 'custom-admin@example.com',
+        password: 'MyCustomSecretPassword999!',
+      }),
+    });
+    assert.equal(goodRes.status, 200);
+    const body = (await goodRes.json()) as { token: string; email: string };
+    assert.equal(body.email, 'custom-admin@example.com');
+    assert.ok(body.token);
+
+    // Clean up
+    delete process.env.ADMIN_EMAIL;
+    delete process.env.ADMIN_PASSWORD;
   });
 });

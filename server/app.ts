@@ -1,3 +1,4 @@
+import './env';
 import crypto from 'node:crypto';
 import { Buffer } from 'node:buffer';
 import fs from 'node:fs/promises';

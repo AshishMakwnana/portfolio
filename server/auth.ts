@@ -1,14 +1,21 @@
+import './env';
 import crypto from 'node:crypto';
 import type { NextFunction, Request, Response } from 'express';
 
-const TOKEN_SECRET =
-  process.env.ADMIN_TOKEN_SECRET ||
-  crypto.createHash('sha256').update(process.cwd()).digest('hex');
+export function getTokenSecret(): string {
+  return (
+    process.env.ADMIN_TOKEN_SECRET ||
+    crypto.createHash('sha256').update(process.cwd()).digest('hex')
+  );
+}
 
-const DEFAULT_ADMIN_EMAIL =
-  process.env.ADMIN_EMAIL || 'ashishmakwana435@gmail.com';
-const DEFAULT_ADMIN_PASSWORD =
-  process.env.ADMIN_PASSWORD || 'PortfolioAdmin#2026';
+export function getAdminEmail(): string {
+  return (process.env.ADMIN_EMAIL || 'ashishmakwana435@gmail.com').trim();
+}
+
+export function getAdminPassword(): string {
+  return process.env.ADMIN_PASSWORD || 'PortfolioAdmin#2026';
+}
 
 export interface AdminTokenPayload {
   email: string;
@@ -17,14 +24,15 @@ export interface AdminTokenPayload {
 
 export function verifyAdminCredentials(email: string, password: string): boolean {
   const normalizedEmail = email.trim().toLowerCase();
-  const expectedEmail = DEFAULT_ADMIN_EMAIL.trim().toLowerCase();
+  const expectedEmail = getAdminEmail().toLowerCase();
 
   if (normalizedEmail !== expectedEmail) {
     return false;
   }
 
+  const expectedPassword = getAdminPassword();
   const providedBuffer = Buffer.from(password, 'utf8');
-  const expectedBuffer = Buffer.from(DEFAULT_ADMIN_PASSWORD, 'utf8');
+  const expectedBuffer = Buffer.from(expectedPassword, 'utf8');
   if (providedBuffer.length !== expectedBuffer.length) {
     return false;
   }
@@ -38,7 +46,7 @@ export function issueAdminToken(email: string): string {
   };
   const encoded = Buffer.from(JSON.stringify(payload), 'utf8').toString('base64url');
   const signature = crypto
-    .createHmac('sha256', TOKEN_SECRET)
+    .createHmac('sha256', getTokenSecret())
     .update(encoded)
     .digest('base64url');
   return `${encoded}.${signature}`;
@@ -50,7 +58,7 @@ export function verifyAdminToken(token: string): AdminTokenPayload | null {
 
   const [encoded, signature] = parts;
   const expectedSignature = crypto
-    .createHmac('sha256', TOKEN_SECRET)
+    .createHmac('sha256', getTokenSecret())
     .update(encoded)
     .digest('base64url');
 
