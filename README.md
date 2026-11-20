@@ -261,6 +261,56 @@ WantedBy=multi-user.target
 
 ---
 
+## Automated CI/CD Pipeline (GitHub Actions)
+
+The repository features decoupled, staged GitHub Actions workflows configured in [`.github/workflows/`](file:///e:/startup-projects/portfolio/.github/workflows):
+
+```
+       [ Git Push / PR on main ]
+                   │
+                   ▼
+     ┌───────────────────────────┐
+     │   CI: Test & Build        │  (.github/workflows/ci.yml)
+     │   - Node 22 setup         │
+     │   - npm run lint          │
+     │   - npm test (24 tests)   │
+     │   - npm run build         │
+     └─────────────┬─────────────┘
+                   │
+                   ▼ (Only upon success)
+     ┌───────────────────────────┐
+     │   CD: Production Deploy   │  (.github/workflows/cd.yml)
+     │   - Confirm CI successful │
+     │   - SSH into AWS Server   │
+     │   - git reset & rebuild   │
+     │   - pm2 reload            │
+     │   - Verify /api/health    │
+     └───────────────────────────┘
+```
+
+### 1. CI Workflow (`ci.yml`)
+- Runs on every push or pull request targeting `main`.
+- Validates TypeScript definitions with `tsc --noEmit`.
+- Runs the complete automated test suite (24 unit/integration tests).
+- Compiles the full production bundle (`dist/index.html` + `dist/server.js`).
+
+### 2. CD Workflow (`cd.yml`)
+- Triggers strictly on `workflow_run` after the **CI workflow finishes on `main`**.
+- Evaluates `github.event.workflow_run.conclusion == 'success'`. If CI fails or is cancelled, CD is aborted immediately.
+- Connects securely to the AWS server via SSH, pulls updates, rebuilds, reloads PM2, and runs a health check against `http://127.0.0.1:3000/api/health`.
+
+### Required GitHub Secrets
+In your GitHub repository (**Settings** → **Secrets and variables** → **Actions**), add:
+
+| Secret Name | Description | Example |
+| :--- | :--- | :--- |
+| `SSH_HOST` | Public IP or domain name of your AWS EC2 instance | `13.233.x.x` or `clone.akmakwana.com` |
+| `SSH_USERNAME` | SSH user on your server | `ashish` or `ubuntu` |
+| `SSH_PRIVATE_KEY` | Private SSH key corresponding to server's `~/.ssh/authorized_keys` | `-----BEGIN OPENSSH PRIVATE KEY-----...` |
+| `SSH_PORT` *(Optional)* | SSH port (defaults to 22 if omitted) | `22` |
+
+---
+
 ## Reverse Proxy (Nginx) & SSL Configuration
 
 When hosting on a Linux VPS, place Nginx in front of port 3000 to manage SSL termination, HTTP/2, and client headers.
