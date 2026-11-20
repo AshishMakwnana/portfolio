@@ -47,29 +47,50 @@ jobs:
           port: ${{ secrets.SSH_PORT || 22 }}
           script_stop: true
           script: |
-            echo ">>> Starting deployment on AWS production server..."
+            set -e
+
+            echo ">>> Starting deployment..."
             cd /opt/app/portfolio
 
-            echo ">>> Fetching and resetting to origin/main..."
+            echo ">>> Fetching latest code..."
             git fetch origin main
             git reset --hard origin/main
 
             echo ">>> Installing dependencies..."
-            npm install
+            npm ci
+
+            echo ">>> Rebuilding native SQLite dependency..."
+            npm rebuild better-sqlite3
 
             echo ">>> Building production bundle..."
             npm run build
 
-            echo ">>> Restarting portfolio process in PM2..."
+            echo ">>> Restarting portfolio process..."
             pm2 restart portfolio --update-env || pm2 start ecosystem.config.cjs --env production
-            pm2 save
 
-            echo ">>> Verifying application health check..."
-            sleep 3
-            HTTP_STATUS=$(curl -s -o /dev/null -w "%{http_code}" http://127.0.0.1:3000/api/health)
-            echo "Local health check HTTP response: $HTTP_STATUS"
-            if [ "$HTTP_STATUS" != "200" ]; then
-              echo "Deployment check failed: Expected HTTP 200, got HTTP $HTTP_STATUS"
+            echo ">>> Waiting for application health..."
+
+            HEALTHY=false
+
+            for attempt in $(seq 1 20); do
+              if curl -fsS http://127.0.0.1:3000/api/health > /dev/null; then
+                echo "Application is healthy!"
+                HEALTHY=true
+                break
+              fi
+
+              echo "Waiting for application... ($attempt/20)"
+              sleep 2
+            done
+
+            if [ "$HEALTHY" != "true" ]; then
+              echo "ERROR: Application health check failed."
+              pm2 list
+              pm2 logs portfolio --lines 100 --nostream
               exit 1
             fi
-            echo ">>> Deployment successfully verified! Portfolio is live and healthy."
+
+            echo ">>> Saving PM2 process list..."
+            pm2 save
+
+            echo ">>> Deployment successfully completed!"
